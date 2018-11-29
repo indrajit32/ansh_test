@@ -12,6 +12,7 @@ class Calculator{
 
 	public function format($raw,$delimeter = ","){
 
+		$raw = str_replace(array("\n","n"), "," ,$raw);
 		$data = explode($delimeter,$raw);
 		return $data;
 	} 
