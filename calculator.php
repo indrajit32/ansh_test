@@ -34,6 +34,17 @@ class Calculator{
 
 		return $arr;
 	}
+	public function arrayFilter($arr){
+
+		$new = [];
+		foreach($arr as $ar){
+
+			if($ar <= 1000)
+			$new[] = $ar;
+		}
+
+		return $new;
+	}
 }
 
 $obj = new Calculator;
@@ -61,7 +72,8 @@ switch( $argv[1] ){
 	break;
 
 	case "add":
-		echo trim($obj->sum($raw_arr));
+		$raw_arr = $obj->arrayFilter( $raw_arr  );
+		echo trim( $obj->sum( $raw_arr ) );
 
 	break;
 
