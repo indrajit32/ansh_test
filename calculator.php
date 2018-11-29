@@ -49,7 +49,7 @@ if (strpos($argv[2], "\\") !== FALSE) {
 }
 
 if( count( $obj->checkNegativeNumber($raw_arr) ) > 0 ){
-	echo "Negative numbers not allowed.";
+	echo "Negative numbers (". implode(',', $obj->checkNegativeNumber($raw_arr) ) .") not allowed.";
 	exit;
 }
 
