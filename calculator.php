@@ -15,22 +15,37 @@ class Calculator{
 		$raw = str_replace(array("\n","n"), "," ,$raw);
 		$data = explode($delimeter,$raw);
 		return $data;
-	} 
+	}
+	public function getDelimeter($str){
+
+		$delimeter = explode('\\',$str);
+		return $delimeter[2];
+	}
 }
 
 $obj = new Calculator;
 
+$raw_arr = [];
+
+if (strpos($argv[2], "\\") !== FALSE) {
+
+    $raw_arr = $obj->format( $argv[2], $obj->getDelimeter($argv[2]) );
+} else{
+
+	$raw_arr = $obj->format($argv[2]);
+}
+
 switch( $argv[1] ){
 
 	case "sum":
-		$num_arr = $obj->format( $argv[2] );
-		echo trim($obj->sum($num_arr));
+		//$num_arr = $obj->format( $argv[2] );
+		echo trim($obj->sum($raw_arr));
 
 	break;
 
 	case "add":
-		$num_arr = $obj->format( $argv[2] );
-		echo trim($obj->sum($num_arr));
+		//$num_arr = $obj->format( $argv[2] );
+		echo trim($obj->sum($raw_arr));
 
 	break;
 
