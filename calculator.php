@@ -23,7 +23,14 @@ switch( $argv[1] ){
 
 	case "sum":
 		$num_arr = $obj->format( $argv[2] );
-		echo $obj->sum($num_arr);
+		echo trim($obj->sum($num_arr));
+
+	break;
+
+	case "add":
+		$num_arr = $obj->format( $argv[2] );
+		echo trim($obj->sum($num_arr));
+
 	break;
 
 }
