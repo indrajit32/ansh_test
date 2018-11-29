@@ -21,6 +21,19 @@ class Calculator{
 		$delimeter = explode('\\',$str);
 		return $delimeter[2];
 	}
+	public function checkNegativeNumber($num){
+
+		$filtered = array_filter($num, "is_numeric");
+		$filtered = array_values($filtered);
+		
+		$arr = array();
+		foreach($filtered as $row){
+			if( $row < 0 )
+				$arr[] = $row;
+		}
+
+		return $arr;
+	}
 }
 
 $obj = new Calculator;
@@ -35,16 +48,19 @@ if (strpos($argv[2], "\\") !== FALSE) {
 	$raw_arr = $obj->format($argv[2]);
 }
 
+if( count( $obj->checkNegativeNumber($raw_arr) ) > 0 ){
+	echo "Negative numbers not allowed.";
+	exit;
+}
+
 switch( $argv[1] ){
 
 	case "sum":
-		//$num_arr = $obj->format( $argv[2] );
 		echo trim($obj->sum($raw_arr));
 
 	break;
 
 	case "add":
-		//$num_arr = $obj->format( $argv[2] );
 		echo trim($obj->sum($raw_arr));
 
 	break;
