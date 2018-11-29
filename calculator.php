@@ -45,6 +45,11 @@ class Calculator{
 
 		return $new;
 	}
+
+	public function multiply($arr){
+
+		return array_product($arr);
+	}
 }
 
 $obj = new Calculator;
@@ -74,6 +79,11 @@ switch( $argv[1] ){
 	case "add":
 		$raw_arr = $obj->arrayFilter( $raw_arr  );
 		echo trim( $obj->sum( $raw_arr ) );
+
+	break;
+
+	case "multiply":
+		echo trim($obj->multiply($raw_arr));
 
 	break;
 
